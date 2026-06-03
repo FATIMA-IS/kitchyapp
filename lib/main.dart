@@ -115,8 +115,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 class MyKitchenPage extends StatelessWidget {
   const MyKitchenPage({super.key});
 
-// 1. ANA FONKSİYON (Önce İnternetli AI'ı dener, çökerse Çevrimdışı Şef'e geçer)
- // 1. ANA FONKSİYON: GÜNCEL VE COK DAHA KARARLI
+ // 1. ANA FONKSİYON: ÇEVRİMDİŞİ ŞEF SİLİNDİ, DİREKT GEMİNİ PAKETİ KULLANILIYOR
   Future<void> _generateRecipeWithAI(BuildContext context, String uid) async {
     final snapshot = await FirebaseFirestore.instance.collection('user_materials').where('uid', isEqualTo: uid).get();
     
@@ -134,7 +133,8 @@ class MyKitchenPage extends StatelessWidget {
     );
 
     try {
-      const apiKey = 'AIzaSyDDAo12zgY50y6SPtZ-UBVbKqpF2ItViYw'; 
+      // 🔥 YENİ ÜRETTİĞİN ŞİFREYİ BURAYA YAPIŞTIR (Eski sızan şifreyi kullanma) 🔥
+      const apiKey = 'AQ.Ab8RN6LnMS7Aq2ekpuzj2shAD2DM_ZrArYxEN6B8nAucNHCKYw'; 
       
       final prompt = '''
       Sen profesyonel ve analitik düşünen bir aşçısın. Mutfağımda şu malzemeler var: ${materials.join(', ')}.
@@ -145,38 +145,39 @@ class MyKitchenPage extends StatelessWidget {
       Ardından sırasıyla; Yemeğin Adı:, Malzemeler: (Evde olanların yanına "✅", eksik olanların yanına "🛒" koy), Yapılışı:
       ''';
 
-      // En stabil ve güncel global endpoint
-      final url = Uri.parse('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$apiKey');
-      
-      final response = await http.post(
-        url,
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          "contents": [{"parts": [{"text": prompt}]}]
-        }),
-      ).timeout(const Duration(seconds: 15)); // Süreyi biraz daha uzattık
-      
-      if (context.mounted) Navigator.pop(context); // Yükleniyor halkasını kapat
+      final model = GenerativeModel(
+        model: 'gemini-2.5-flash',
+        apiKey: apiKey,
+      );
 
-      final String decodedBody = utf8.decode(response.bodyBytes);
+      final content = [Content.text(prompt)];
+      final response = await model.generateContent(content);
+      
+      if (context.mounted) Navigator.pop(context);
 
-      if (response.statusCode == 200) {
-        final data = json.decode(decodedBody); 
-        final textResponse = data['candidates'][0]['content']['parts'][0]['text'];
-        _showRecipeDialog(context, textResponse, isOffline: false);
+      if (response.text != null && response.text!.isNotEmpty) {
+        _showRecipeDialog(context, response.text!, isOffline: false);
       } else {
-        throw Exception('API Hatası veya Model Yetkisi Yok');
+        throw Exception('Gemini boş cevap döndürdü.');
       }
+
     } catch (e) {
-      if (context.mounted) Navigator.pop(context); // Yükleniyor halkasını kapat
+      if (context.mounted && Navigator.canPop(context)) {
+          Navigator.pop(context);
+      }
       
-      // 🔥 İNTERNET YAVAŞSA VEYA API REDDEDİLDİYSE ÇEVRİMDİŞİ MODA GEÇ 🔥
+      // ÇEVRİMDİŞİ ZIRVALIĞI TAMAMEN SİLİNDİ, DİREKT GERÇEK HATAYI EKRANA BASIYOR
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Yapay Zeka sunucusuna bağlanılamadı. Çevrimdışı Şef devrede! 📡'),
-          backgroundColor: Colors.orange,
-        ));
-        await _runOfflineChef(context, materials);
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('🚨 API Bağlantı Hatası', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+            content: SingleChildScrollView(child: Text(e.toString())),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(context), child: const Text('Kapat'))
+            ],
+          ),
+        );
       }
     }
   }

@@ -9,7 +9,7 @@ Kitchy, kullanıcıların mutfaklarındaki mevcut malzemeleri yönetebilmesini, 
 Proje kapsamında, sistemin sürdürülebilirliğini, test edilebilirliğini ve asenkron işlem yönetimini maksimize etmek amacıyla MVVM (Model-View-ViewModel) mimari deseni ve Repository Pattern (Depo Deseni) kullanılmıştır. 
 •	Frontend: Flutter 
 •	Backend & Veritabanı: Firebase (Authentication, Cloud Database) 
-•	Yapay Zeka ve API: Gemini API, Spoonacular API 
+•	Yapay Zeka ve API: Gemini API, TheMealDB API 
 •	Tasarım Standartları: Figma UI/UX standartları 
 Mimari Avantajlar
 •	Bağımsız Katmanlar (Separation of Concerns): Arayüz kodları (UI) ile API ve iş mantığı (ViewModel) birbirinden tamamen ayrıştırılmıştır. 

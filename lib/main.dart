@@ -135,7 +135,7 @@ class MyKitchenPage extends StatelessWidget {
     try {
       // 🔥 YENİ ÜRETTİĞİN ŞİFREYİ BURAYA YAPIŞTIR (Eski sızan şifreyi kullanma) 🔥
       // Koddaki eski şifreyi sil, yerine şunu yaz:
-const String apiKey = String.fromEnvironment('AQ.Ab8RN6IB0Wv02QdU1ghLgkC1Num2YtV3JOZprmRDeCXash7paQ');
+final String apiKey = 'AQ.Ab8RN6IB0Wv02QdU1ghLgkC1Num2YtV3JOZprmRDeCXash7paQ';
       
       final prompt = '''
       Sen profesyonel ve analitik düşünen bir aşçısın. Mutfağımda şu malzemeler var: ${materials.join(', ')}.
@@ -1802,7 +1802,7 @@ class _AddRecipeDialogWidgetState extends State<AddRecipeDialogWidget> {
   Future<String?> _uploadImageToImgBB(Uint8List imageBytes) async {
     try {
       // ŞİFREN BURAYA EKLENDİ!
-      const String imgbbApiKey = String.fromEnvironment('c69a1cb6062a6e9f1157ff21af1b5aa4');
+ const String imgbbApiKey = 'c69a1cb6062a6e9f1157ff21af1b5aa4';
       
       var request = http.MultipartRequest('POST', Uri.parse('https://api.imgbb.com/1/upload'));
       request.fields['key'] = imgbbApiKey;

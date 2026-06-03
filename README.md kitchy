@@ -24,14 +24,17 @@ flutter pub get
 4.	Uygulamayı çalıştırın:
 flutter run
 (Not: Firebase bağlantıları ve API anahtarları için .env veya ilgili yapılandırma dosyalarını projenin kök dizinine eklemeyi unutmayın.)
+
+🚀 APK İndirme:** https://github.com/FATIMA-IS/kitchyapp/releases/tag/v1.0.0
+*(Not: APK dosyasını kurarken telefonunuzda "Bilinmeyen kaynaklardan yüklemeye izin ver" seçeneğinin açık olduğundan emin olunuz.)*
+
+🎥 Sunum Videosu: 👉 https://youtube.com/watch/BFeO5Txef4w?feature=share
+
 👥 Geliştirici Ekip
 Bu proje, aşağıdaki geliştiriciler tarafından tasarlanmış ve kodlanmıştır:
 •	Serra Tengis 
 •	Özge Özkul 
 •	Fatıma Isalı
 
-🚀 APK İndirme:** 👉 [Kitchy Uygulamasını İndirmek İçin Tıklayın] (https://github.com/FATIMA-IS/kitchyapp/releases/latest/download/app-release.apk) 
-*(Not: APK dosyasını kurarken telefonunuzda "Bilinmeyen kaynaklardan yüklemeye izin ver" seçeneğinin açık olduğundan emin olunuz.)*
 
-🎥 **Sunum Videosu:** 👉 📺 [Buraya YouTube Linkini Yapıştır - Varsa]
 

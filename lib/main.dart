@@ -134,7 +134,8 @@ class MyKitchenPage extends StatelessWidget {
 
     try {
       // 🔥 YENİ ÜRETTİĞİN ŞİFREYİ BURAYA YAPIŞTIR (Eski sızan şifreyi kullanma) 🔥
-      const apiKey = 'AQ.Ab8RN6LnMS7Aq2ekpuzj2shAD2DM_ZrArYxEN6B8nAucNHCKYw'; 
+      // Koddaki eski şifreyi sil, yerine şunu yaz:
+const String apiKey = String.fromEnvironment('GEMINI_API_KEY');
       
       final prompt = '''
       Sen profesyonel ve analitik düşünen bir aşçısın. Mutfağımda şu malzemeler var: ${materials.join(', ')}.

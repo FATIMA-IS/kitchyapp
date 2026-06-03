@@ -1802,7 +1802,7 @@ class _AddRecipeDialogWidgetState extends State<AddRecipeDialogWidget> {
   Future<String?> _uploadImageToImgBB(Uint8List imageBytes) async {
     try {
       // ŞİFREN BURAYA EKLENDİ!
-      const String imgbbApiKey = 'sifre'; 
+      const String imgbbApiKey = String.fromEnvironment('IMGBB_API_KEY');
       
       var request = http.MultipartRequest('POST', Uri.parse('https://api.imgbb.com/1/upload'));
       request.fields['key'] = imgbbApiKey;

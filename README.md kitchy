@@ -1,0 +1,31 @@
+Kitchy - Akıllı Mutfak Asistanı 🍃
+Kitchy, kullanıcıların mutfaklarındaki mevcut malzemeleri yönetebilmesini, gıda israfını önlemek adına ellerindeki malzemelerle uyumlu akıllı tarifler alabilmesini ve kişiselleştirilmiş beslenme planları oluşturabilmesini sağlayan yapay zeka destekli akıllı bir mutfak asistanıdır. 
+🌟 Temel Özellikler
+•	Dijital Mutfak Envanteri: Kullanıcıların ellerindeki malzemeleri sisteme ekleyebilmesi ve anlık güncelleyebilmesi. 
+•	AI Destekli Akıllı Tarif Önerisi: Envanterdeki malzemelerle en yüksek yüzdeyle eşleşen tariflerin yapay zeka entegrasyonu ile analiz edilerek listelenmesi. 
+•	Haftalık Planlama ve Takvim: Kullanıcıların seçtikleri tarifleri haftalık beslenme takvimine öğün bazlı olarak ekleyebilmesi. 
+•	Akıllı Alışveriş Listesi: Haftalık takvime eklenen tarifler ile evdeki envanterin karşılaştırılarak, eksik malzemelerin otomatik olarak alışveriş listesine dönüştürülmesi. 
+🏗 Sistem Mimarisi ve Teknolojiler
+Proje kapsamında, sistemin sürdürülebilirliğini, test edilebilirliğini ve asenkron işlem yönetimini maksimize etmek amacıyla MVVM (Model-View-ViewModel) mimari deseni ve Repository Pattern (Depo Deseni) kullanılmıştır. 
+•	Frontend: Flutter 
+•	Backend & Veritabanı: Firebase (Authentication, Cloud Database) 
+•	Yapay Zeka ve API: Gemini API, Spoonacular API 
+•	Tasarım Standartları: Figma UI/UX standartları 
+Mimari Avantajlar
+•	Bağımsız Katmanlar (Separation of Concerns): Arayüz kodları (UI) ile API ve iş mantığı (ViewModel) birbirinden tamamen ayrıştırılmıştır. 
+🚀 Kurulum
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
+1.	Depoyu bilgisayarınıza klonlayın:
+git clone https://github.com/FATIMA-IS/kitchyapp
+2.	Proje dizinine gidin:
+cd kitchy
+3.	Gerekli bağımlılıkları yükleyin:
+flutter pub get
+4.	Uygulamayı çalıştırın:
+flutter run
+(Not: Firebase bağlantıları ve API anahtarları için .env veya ilgili yapılandırma dosyalarını projenin kök dizinine eklemeyi unutmayın.)
+👥 Geliştirici Ekip
+Bu proje, aşağıdaki geliştiriciler tarafından tasarlanmış ve kodlanmıştır:
+•	Serra Tengis 
+•	Özge Özkul 
+•	Fatıma Isalı
